@@ -30,28 +30,28 @@
         <div class="form-group">
           <label class="form-label mt-4">Street</label>
           <?= form_input(['name'=>'street','class'=>'form-control','placeholder'=>'Enter Street',
-          'value'=>set_value('street', $detail->street), 'disabled'=>''
+          'value'=>set_value('street', $detail->vstreet), 'disabled'=>''
         ]) ?>
         </div>
 
         <div class="form-group">
           <label class="form-label mt-4">City</label>
           <?= form_input(['name'=>'city','class'=>'form-control','placeholder'=>'Enter City',
-          'value'=>set_value('city', $detail->city), 'disabled'=>''
+          'value'=>set_value('city', $detail->vcity), 'disabled'=>''
         ]) ?>
         </div>
 
         <div class="form-group">
           <label class="form-label mt-4">State</label>
           <?= form_input(['name'=>'state','class'=>'form-control','placeholder'=>'Enter State',
-          'value'=>set_value('state', $detail->state), 'disabled'=>''
+          'value'=>set_value('state', $detail->vstate), 'disabled'=>''
         ]) ?>
         </div>
 
         <div class="form-group">
           <label class="form-label mt-4">Zip Code</label>
           <?= form_input(['name'=>'zip','class'=>'form-control','placeholder'=>'Enter Zip',
-          'value'=>set_value('zip', $detail->zip), 'disabled'=>''
+          'value'=>set_value('zip', $detail->vzip), 'disabled'=>''
         ]) ?>
         </div>
 

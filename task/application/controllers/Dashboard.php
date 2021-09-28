@@ -38,18 +38,6 @@ class Dashboard extends CI_Controller {
 
 	public function update_user_details($user_id) {
 
-		// function checkDateFormat($dob) {
-		// 	if (preg_match("/[0-31]{2}/[0-12]{2}/[0-9]{4}/", $dob)) {
-		// 		if(checkdate(substr($date, 3, 2), substr($date, 0, 2), substr($date, 6, 4)))
-
-		// 			return true;
-		// 		else
-		// 			return false;
-		// 	} else{
-		// 		return false;
-		// 	}
-		// }
-
 		$config = [
             'upload_path'       =>      './uploads',
             'allowed_types'     =>      'jpg|jpeg|png|gif|JPG',
@@ -59,11 +47,10 @@ class Dashboard extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username','Name','trim|required');
 		$this->form_validation->set_rules('email','Email','required|valid_email');
-		// $this->form_validation->set_rules('dob','DOB','callback_checkDateFormat');
-		$this->form_validation->set_rules('street','Street');
-		$this->form_validation->set_rules('city','City');
-		$this->form_validation->set_rules('state','State');
-		$this->form_validation->set_rules('zip','Zip',);
+		$this->form_validation->set_rules('vstreet','Street');
+		$this->form_validation->set_rules('vcity','City');
+		$this->form_validation->set_rules('vstate','State');
+		$this->form_validation->set_rules('vzip','Zip',);
 
 		if ( $this->form_validation->run() && $this->upload->do_upload('photo')){
 			$post = $this->input->post();
@@ -71,16 +58,14 @@ class Dashboard extends CI_Controller {
 			$data= $this->upload->data();
 			$image_path= base_url("uploads/".$data['raw_name'].$data['file_ext']);
 			$post['photo'] = $image_path;
-			print_r($post);
+			// print_r($post);
 			$this->load->model('user_model');
 			$this->user_model->update_detail($post,$user_id);
+			$this->user_model->update_address_detail($post, $user_id);
 
 			return redirect('Dashboard/index');
 		}
 		else{
-			// echo "<script type='text/javascript'>
-			// alert('Please Enter correct values in dd/mm/yyyy Format');
-			// </script>";
 			$this->load->view('dashboard/edit_detail',['id'=>$user_id]);
 		}
 	}

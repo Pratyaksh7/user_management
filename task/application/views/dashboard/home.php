@@ -25,7 +25,7 @@
 	      	<?= form_close(); ?>
 	      </td>
 	      <td><?= $user->email; ?></td>
-	      <td><?= $user->street.", ".$user->city.", ".$user->state.", ".$user->zip; ?></td>
+	      <td><?= $user->vstreet.", ".$user->vcity.", ".$user->vstate.", ".$user->vzip; ?></td>
 	      <td>
 	      	
 	      	<span style="display: flex; align-items: center;justify-content: space-around;">
@@ -47,11 +47,6 @@
         			<?= form_open("dashboard/change_status/{$user->id}/{$user->status}"); ?>
                 		<?= form_button(['name'=>'form_submit','type'=>'submit','class'=>'btn btn-danger','content'=>'InActive']); ?>
             		<?= form_close(); ?>
-
-        			<!-- <a href="<?= base_url(); ?>Dashboard/change_status?sid=<?= $user->id;?>&sval=<?= $user->status; ?>"> -->
-            			<!-- InActive -->
-            			<!-- <input type="checkbox" name="status" class="form-check-input" checked> -->
-            		<!-- </a> -->
         			
 		        <?php } ?>
 		     </div>

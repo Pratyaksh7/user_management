@@ -26,8 +26,9 @@
 		    <div class="form-group">
 		      <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
 		      <?= form_input(['name'=>'email','class'=>'form-control','placeholder'=>'Enter email',
-		          // 'value'=>set_value('email')
+		          'value'=>set_value('email')
 		       ]) ?>
+		       <?= form_error('email'); ?>
 		      
 		    </div>
 		    <div class="form-group">
@@ -35,6 +36,7 @@
 		      <?= form_password(['name'=>'password', 'class'=>'form-control', 'placeholder'=>'Enter Password']); ?>
 
 		    </div>
+		    <?= form_error('password'); ?>
 
 		    <div class="form-group">
 		    	<a href="<?=base_url() ?>login/user_signin"><small id="emailHelp" class="form-text text-muted">Register Account</small></a>

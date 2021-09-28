@@ -46,15 +46,38 @@ class User_model extends CI_Model
 		$data = array(
 			'username' => $post['username'],
 			'email' => $post['email'],
-			'street' => $post['street'],
-			'city' => $post['city'],
-			'state' => $post['state'],
-			'zip' => $post['zip'],
+			// 'street' => $post['street'],
+			// 'city' => $post['city'],
+			// 'state' => $post['state'],
+			// 'zip' => $post['zip'],
 			'photo' => $post['photo'],
 		);
 
 		return $this->db->where('id',$user_id)
 						->update('user_detail', $data);
+	}
+	public function update_address_detail($post,$user_id){
+		$address = array();
+
+		for($i = 1; $i < $post['total_count']; $i++) {
+			if(isset($post['vstreet_' . $i]) && !empty($post['vstreet_' . $i])) {
+				// echo $i;
+				$address[$i]['id'] = $user_id;
+				$address[$i]['vstreet'] = $post['vstreet_' . $i];
+				$address[$i]['vcity'] = $post['vcity_' . $i];
+				$address[$i]['vstate'] = $post['vstate_' . $i];
+				$address[$i]['vzip'] = $post['vzip_' . $i];
+			} else {
+				$post['total_count']++;
+				continue;
+			}
+		}
+		$address = array_values($address);
+		// echo"<pre>";
+		// print_r($address);
+		// echo"</pre>";
+		return $this->db->update_batch('user_detail',$address,'id');
+
 	}
 
 	public function deleteUser($user_id) {

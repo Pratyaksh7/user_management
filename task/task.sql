@@ -35,10 +35,10 @@ CREATE TABLE `user_detail` (
   `email` varchar(30) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `password` varchar(150) NOT NULL,
-  `street` varchar(20) NOT NULL,
-  `city` varchar(20) NOT NULL,
-  `state` varchar(20) NOT NULL,
-  `zip` int(10) NOT NULL,
+  `vstreet` varchar(20) NOT NULL,
+  `vcity` varchar(20) NOT NULL,
+  `vstate` varchar(20) NOT NULL,
+  `vzip` int(10) NOT NULL,
   `status` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

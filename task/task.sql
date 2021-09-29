@@ -67,6 +67,13 @@ CREATE TABLE `user_detail` (
   `email` varchar(30) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `password` varchar(150) NOT NULL,
+<<<<<<< HEAD
+=======
+  `vstreet` varchar(20) NOT NULL,
+  `vcity` varchar(20) NOT NULL,
+  `vstate` varchar(20) NOT NULL,
+  `vzip` int(10) NOT NULL,
+>>>>>>> f28f217e84bec591431417b0913663c23890ebbb
   `status` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

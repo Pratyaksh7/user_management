@@ -25,7 +25,7 @@
 	      	<?= form_close(); ?>
 	      </td>
 	      <td><?= $user->email; ?></td>
-	      <td><?= $user->vstreet.", ".$user->vcity.", ".$user->vstate.", ".$user->vzip; ?></td>
+	      <!-- <td><?= $user->vstreet.", ".$user->vcity.", ".$user->vstate.", ".$user->vzip; ?></td> -->
 	      <td>
 	      	
 	      	<span style="display: flex; align-items: center;justify-content: space-around;">

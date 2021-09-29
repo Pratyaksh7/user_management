@@ -35,13 +35,17 @@
 
         <input type="hidden" name="total_count" id="total_count" value="2">
 
-        <div class="row formulation-div" style="display: flex;justify-content: center; align-items: center;">
+        <?php if(count($address)){ ?>
 
+        <div class="row formulation-div" style="display: flex;justify-content: center; align-items: center;">
+        	<?php $flag=0; ?>
+        	<?php for($i=0; $i < count($address); $i++): ?>
+        		
         	<div class="col-md-3">
         		<div class="form-group">
 		          <label class="form-label mt-4">Street</label>
 		          <?= form_input(['name'=>'vstreet_1','class'=>'form-control','placeholder'=>'Enter Street', 'id'=>'vstreet',
-		          'value'=>set_value('street', $detail->vstreet)
+		          'value'=>set_value('street', $address[$i]->vstreet)
 		        ]) ?>
         		</div>
         	</div>
@@ -50,7 +54,7 @@
         		<div class="form-group">
 		          <label class="form-label mt-4">City</label>
 		          <?= form_input(['name'=>'vcity_1','class'=>'form-control','placeholder'=>'Enter City', 'id'=>'vcity',
-		          'value'=>set_value('city', $detail->vcity)
+		          'value'=>set_value('city', $address[$i]->vcity)
 		        	]) ?>
 		        </div>
         	</div>
@@ -59,7 +63,7 @@
         		<div class="form-group">
 		          <label class="form-label mt-4">State</label>
 		          <?= form_input(['name'=>'vstate_1','class'=>'form-control','placeholder'=>'Enter State', 'id'=>'vstate',
-		          'value'=>set_value('state', $detail->vstate)
+		          'value'=>set_value('state', $address[$i]->vstate)
 		        	]) ?>
         		</div>
         	</div>
@@ -68,7 +72,57 @@
         		<div class="form-group">
 		          <label class="form-label mt-4">Zip Code</label>
 		          <?= form_input(['name'=>'vzip_1','class'=>'form-control','placeholder'=>'Enter Zip', 'id'=>'vzip',
-		          'value'=>set_value('zip', $detail->vzip)
+		          'value'=>set_value('zip', $address[$i]->vzip)
+		        	]) ?>
+		        </div>
+        	</div>
+
+        	
+        	<div class="col-md-2">
+        		<?php if($flag == 0) { ?>
+        		<div class="form-group">
+        			<a href="javascript:void(0)" class="btn btn-danger add_more_btn" title="Add More" style="margin-top: 30px;">Add More</a>
+        		</div>
+        			<?php 
+		        		$flag= 1 ;
+
+		    		  } ?>
+        	</div>
+		        	
+        	<?php endfor; ?>
+        </div>
+
+    	<?php } else { ?>
+
+    		<div class="row formulation-div" style="display: flex;justify-content: center; align-items: center;">
+        	<div class="col-md-3">
+        		<div class="form-group">
+		          <label class="form-label mt-4">Street</label>
+		          <?= form_input(['name'=>'vstreet_1','class'=>'form-control','placeholder'=>'Enter Street', 'id'=>'vstreet'
+		        ]) ?>
+        		</div>
+        	</div>
+
+        	<div class="col-md-3">
+        		<div class="form-group">
+		          <label class="form-label mt-4">City</label>
+		          <?= form_input(['name'=>'vcity_1','class'=>'form-control','placeholder'=>'Enter City', 'id'=>'vcity',
+		        	]) ?>
+		        </div>
+        	</div>
+
+        	<div class="col-md-2">
+        		<div class="form-group">
+		          <label class="form-label mt-4">State</label>
+		          <?= form_input(['name'=>'vstate_1','class'=>'form-control','placeholder'=>'Enter State', 'id'=>'vstate',
+		        	]) ?>
+        		</div>
+        	</div>
+
+        	<div class="col-md-2">
+        		<div class="form-group">
+		          <label class="form-label mt-4">Zip Code</label>
+		          <?= form_input(['name'=>'vzip_1','class'=>'form-control','placeholder'=>'Enter Zip', 'id'=>'vzip',
 		        	]) ?>
 		        </div>
         	</div>
@@ -79,7 +133,10 @@
         		</div>
         		
         	</div>
+        	
         </div>
+
+    	<?php } ?>
 
         <!-- script form add by ajax dynamically -->
        <script id="hidden-template" type="text/html">

@@ -32,11 +32,22 @@ class Dashboard extends CI_Controller {
 
 	public function edit_user_details($user_id){
 		$this->load->model('user_model');
+		$this->load->model('address_model');
 		$detail = $this->user_model->find_detail($user_id);
-		$this->load->view('dashboard/edit_detail',['detail'=>$detail]);
+		$address = $this->address_model->get_address($user_id);
+
+
+		// echo "<pre>";
+		// print_r($detail);
+		// print_r($address);
+		// echo "</pre>";
+		$this->load->view('dashboard/edit_detail',['detail'=>$detail, 'address'=>$address]);
 	}
 
 	public function update_user_details($user_id) {
+
+		// $post = $this->input->post();
+		
 
 		$config = [
             'upload_path'       =>      './uploads',
@@ -58,10 +69,14 @@ class Dashboard extends CI_Controller {
 			$data= $this->upload->data();
 			$image_path= base_url("uploads/".$data['raw_name'].$data['file_ext']);
 			$post['photo'] = $image_path;
+			// echo "<pre>";
 			// print_r($post);
+			// echo "</pre>";
 			$this->load->model('user_model');
+			$this->load->model('address_model');
 			$this->user_model->update_detail($post,$user_id);
-			$this->user_model->update_address_detail($post, $user_id);
+			// $this->user_model->update_address_detail($post, $user_id);
+			$this->address_model->insert_address($post, $user_id);
 
 			return redirect('Dashboard/index');
 		}

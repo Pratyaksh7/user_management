@@ -1,5 +1,5 @@
 # user_management
-##Task given:
+##gist of the project
 
 
 User opens login page. Clicks on Register Account
